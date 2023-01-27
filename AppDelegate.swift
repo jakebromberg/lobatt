@@ -16,7 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     self.statusItem.menu = NSMenu()
     self.statusItem.menu?.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
     
-    self.menuRefreshTimer = Timer.scheduledTimer(withTimeInterval: 30, repeats: true, block: { _ in
+    self.menuRefreshTimer = .scheduledTimer(withTimeInterval: 30, repeats: true, block: { _ in
       let percent = SystemProfiler.CurrentProfile().power.first!.chargeInfo!.percent
       self.statusItem.button?.title = String(percent) + "%"
       self.statusItem.button?.needsDisplay = true
